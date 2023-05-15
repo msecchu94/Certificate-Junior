@@ -1,12 +1,10 @@
-<!-- <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" value="50">
-</mat-progress-spinner> -->
 <div class="login" fxLayout="column" fxLayoutAlign="center center">
-    <form [formGroup]="loginFrm">
+    <form [formGroup]="loginFrm" (ngSubmit)="login(loginFrm)">
         <div fxLayout="row" fxLayoutAlign="center center" fxLayout.lt-sm="column">
             <img src="../../../assets/icons/icon-128x128.png" alt="logo">
         </div>
         <br/><br/>
-        <div fxLayout="row" fxLayoutAlign="center" fxLayout.lt-sm="column" fxLayoutGap="20px">
+        <div fxLayout="row" fxLayoutAlign="center" fxLayout.lt-sm="column">
             <mat-form-field fxFlex="100">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email" placeholder="Ex. pat@example.com" required name="email">
@@ -16,8 +14,8 @@
         <div fxLayout="row" fxLayoutAlign="center" fxLayout.lt-sm="column" fxLayoutGap="20px">
             <mat-form-field fxFlex="100">
                 <mat-label>Password</mat-label>
-                <input matInput formControlName="password" required name="password">
-                <mat-icon class="password" matSuffix class="password"></mat-icon>
+                <input matInput formControlName="password" placeholder="Ex. pass123" required name="password">
+                <mat-icon matSuffix class="password"></mat-icon>
                 <mat-error>Password is required</mat-error>
             </mat-form-field>
         </div>
@@ -25,7 +23,7 @@
         </mat-error>
         <br/>
         <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="12px">
-            <button mat-raised-button color="primary" name="btn-login">Ingresar</button>
+            <button mat-raised-button color="primary" type="submit" name="btn-login">Sing In</button>
         </div>
     </form>
 </div>
