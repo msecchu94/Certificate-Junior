@@ -5,7 +5,7 @@ import { UserRepository } from '../repositories/user.repository';
 
 export class UserLoginUseCase implements UseCase<{ username: string; password: string }, UserModel> {
     
-    constructor(private userRepository: UserRepository) { }
+    constructor(private userRepository: UserRepository) {}
     
     execute(
        params: { username: string, password: string },
