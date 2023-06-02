@@ -12,6 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from 'src/presentation/store/effects/auth.effect';
+import { authReducer } from 'src/presentation/store/reducers/auth.reducers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,12 +21,11 @@ import { AuthEffects } from 'src/presentation/store/effects/auth.effect';
     AppRoutingModule,
     PagesModule,
     DataModule,
-    StoreModule.forRoot(),
+    StoreModule.forRoot({ auth: authReducer }),
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       name: 'Test'
-      // logOnly: environment.
     }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
