@@ -1,5 +1,5 @@
 <div class="login" fxLayout="column" fxLayoutAlign="center center">
-    <form [formGroup]="loginFrm" (ngSubmit)="login(loginFrm)">
+    <form [formGroup]="loginFrm" (ngSubmit)="onLogin(loginFrm)">
         <div fxLayout="row" fxLayoutAlign="center center" fxLayout.lt-sm="column">
             <img src="../../../assets/icons/icon-128x128.png" alt="logo">
         </div>
@@ -23,7 +23,14 @@
         </mat-error>
         <br/>
         <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="12px">
-            <button mat-raised-button color="primary" type="submit" name="btn-login">Sing In</button>
+            <button mat-raised-button color="primary" type="submit" name="btn-login">
+                <ng-container *ngIf="!isLoading; else loadingContent">
+                    Sign In
+                </ng-container>
+                <ng-template #loadingContent>
+                  <app-mat-progress-spinner></app-mat-progress-spinner>
+                </ng-template>
+              </button>
         </div>
     </form>
 </div>

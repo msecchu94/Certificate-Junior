@@ -26,7 +26,7 @@ export class UserImplementationRepository extends UserRepository {
     }
 
     register(params: {phoneNum: string, password: string}): Observable<UserModel> {
-       return this.http
+        return this.http
             .post<UserEntity>('https://example.com/register', {params})
             .pipe(map(this.userMapper.mapFrom));
     }
