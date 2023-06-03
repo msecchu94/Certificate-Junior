@@ -5,9 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { AuthState } from 'src/presentation/store/state/auth.state';
 import { selectError, selectIsLoading, selectUser } from 'src/presentation/store/selectors/auth.selectors';
 import { distinctUntilChanged } from 'rxjs/operators';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBarService } from 'src/app/shared/services/mat-snack-bar.service';
 
 @Component({
   selector: 'app-login',
@@ -17,16 +15,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit{
   loginFrm: FormGroup;
   user:any;
-  isLoading: boolean = true;
+  isLoading: boolean = false;
   error: string | null = '';
-  //TO DO IMPLEMENT CLASS OR SERVICE WITH ProgressSpinner
-  color: ThemePalette = 'accent';
-  mode: ProgressSpinnerMode = 'indeterminate';
-  value = 5;
-  //TO DO IMPLEMENT CLASS OR SERVICE WITH _snackBar
-  durationInSeconds = 5;
-
-  constructor(private _store: Store<AuthState>, private _fb: FormBuilder, private _snackBar: MatSnackBar) {
+  constructor(private _store: Store<AuthState>, private _fb: FormBuilder,  private _snackBarService: MatSnackBarService) {
     this.loginFrm = this._fb.group({ email: ['', Validators.email], password: ['', Validators.required]});
   }
 
@@ -38,7 +29,7 @@ export class LoginComponent implements OnInit{
 
   onLogin(loginFrm: FormGroup) {
     if (!loginFrm.valid) {
-      this._snackBar.open('Complete', 'dismiss',{duration: this.durationInSeconds * 1000});
+      this._snackBarService.open('Complete Form', 'Dismiss');
       return;
     }
     this._store.dispatch(login({username: loginFrm.value.email, password: loginFrm.value.password}));

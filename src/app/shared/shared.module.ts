@@ -4,9 +4,12 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
+import { MatProgressSpinnerComponent } from './components/mat-progress-spinner/mat-progress-spinner.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MatProgressSpinnerComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -18,6 +21,7 @@ import { MaterialModule } from './material/material.module';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MaterialModule,
+    MatProgressSpinnerComponent
   ],
 })
 export class SharedModule {}
