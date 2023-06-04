@@ -19,7 +19,5 @@ export class LoginFormService {
     });
   }
 
-  resetForm(): void {
-    this.loginForm.reset();
-  }
+  resetForm(): void { this.loginForm.reset();}
 }

@@ -21,7 +21,7 @@ export class AuthEffects {
         mergeMap(({ username, password }) =>
         this.userLoginUseCase.execute({username, password}).pipe(
           map(user => loginSuccess({ user })),
-          catchError(error => of(loginFailure({ error: "error.message" })))
+          catchError(error => of(loginFailure({ error: error })))
         )
       )
     )
@@ -36,5 +36,4 @@ export class AuthEffects {
     ),
     { dispatch: false }
   );
-
 }
