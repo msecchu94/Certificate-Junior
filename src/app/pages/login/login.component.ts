@@ -7,7 +7,6 @@ import { selectError, selectIsLoading, selectUser } from 'src/presentation/store
 import { MatSnackBarService } from 'src/app/shared/services/mat-snack-bar.service';
 import { LoginFormService } from 'src/app/shared/services/forms/login-form.service';
 import { MESSAGE_LOGIN_FORM_INVALID, MESSAGE_LOGIN_SUCCESS, SNACKBAR_ACTION_TYPE_DISMISS } from 'src/app/shared/utils/constants/messages';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,8 +24,8 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {
     this._store.pipe(select(selectIsLoading), distinctUntilChanged()).subscribe(isLoading => {this.isLoading = isLoading});
-    this._store.pipe(select(selectUser), distinctUntilChanged()).subscribe(user => {this.user = user; this.user ? this.onLoginSuccess() : null});
-    this._store.pipe(select(selectError), distinctUntilChanged()).subscribe(error => {this.error = error; this.error ? this.onLoginFailure() : null});
+    this._store.pipe(select(selectUser), distinctUntilChanged()).subscribe(user => {this.user = user;});
+    this._store.pipe(select(selectError), distinctUntilChanged()).subscribe(error => {this.error = error;});
   }
 
   onLogin() {
